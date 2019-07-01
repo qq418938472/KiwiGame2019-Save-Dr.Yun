@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SupermarketSkin" width="640" height="1140" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<e:Rect strokeWeight="4" strokeColor="0x737272" ellipseWidth="50" ellipseHeight="50" width="572" y="112" scaleX="1" scaleY="1" height="836" horizontalCenter="0" fillColor="0xf0f0f0"/>
+	<e:Scroller id="mainScroller" width="550" height="810" y="126" anchorOffsetX="0" anchorOffsetY="0" scrollPolicyH="off" scrollPolicyV="on" horizontalCenter="0">
+		<e:Group id="mainGroup" width="550" anchorOffsetY="0" height="810" x="0" y="9.09">
+			<e:List id="commodityList" anchorOffsetX="0" anchorOffsetY="0" itemRendererSkinName="commodityItem" height="810" width="550" y="0" horizontalCenter="0"/>
+		</e:Group>
+	</e:Scroller>
+	<e:Image id="closeBtn" width="70" height="73" x="573.66" y="143.01" source="close_png" anchorOffsetX="35" anchorOffsetY="36.5"/>
+	<e:Button id="addMoneyBtn" label="加钱500" x="56" y="994"/>
+</e:Skin>

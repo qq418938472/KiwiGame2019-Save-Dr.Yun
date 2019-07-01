@@ -1,0 +1,18 @@
+class DataManager {
+    private static _money: number = 0;
+    public static countDown: number = 20;
+    public static get money(): number {
+        return this._money;
+    }
+    public static set money(v: number) {
+        if (v < 0) v = 0;
+        this._money = v;
+        GameEventManager.getInstance().dispatchEventWith(GameEventManager.SET_MONEY);
+    }
+
+    public static dataArr: any[]; //商品信息
+
+    public static init() {
+        DataManager.dataArr = RES.getRes("shoppingMall_json");
+    }
+}

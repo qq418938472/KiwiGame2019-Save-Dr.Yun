@@ -1,0 +1,35 @@
+class Story extends ViewBase {
+    public constructor() {
+        super();
+    }
+
+    public nextBtn: eui.Button;
+    private bgIndex: number = 0;
+    private bgRect: eui.Rect;
+    private tipsLabel: eui.Label;
+    protected onload(): void {
+        this.skinName = StorySkin;
+        this.addTouchEvent();
+    }
+
+    protected onshow() {
+    }
+
+    private addTouchEvent() {
+        this.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.changeBg, this);
+    }
+
+    private changeBg() {
+        this.tipsLabel.text = '故事第' + ++this.bgIndex + '页';
+        if (this.bgIndex == 1) {
+            DataManager.levelIndex = 0;
+            DataManager.isFirstTimePlayBoom = true;
+            DataManager.isFirstTimePlayCalculate = true;
+            var calculate = new Calculate();
+            LayerManager.addChildLayer(calculate);
+            // var Bomb = new Bomb();
+            // LayerManager.addChildLayer(Bomb);
+            this.hide();
+        }
+    }
+}

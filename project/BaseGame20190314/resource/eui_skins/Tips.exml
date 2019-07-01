@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TipsSkin" width="640" height="1140" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="165fad3b596" ></w:Config>
+	<e:Group id="tipsGroup" width="640" height="1140" anchorOffsetX="320" anchorOffsetY="568" verticalCenter="0" x="320">
+		<e:Image id="bg" width="640" height="226" horizontalCenter="0" verticalCenter="0" source="tips_png" anchorOffsetX="320" anchorOffsetY="113"/>
+		<e:Label id="tips" text="健康值低于6" anchorOffsetX="0" width="530.31" anchorOffsetY="0" height="277.27" textAlign="center" verticalAlign="middle" fontFamily="KaiTi" size="40" verticalCenter="-0.5" textColor="0xFFFFFF" lineSpacing="10" horizontalCenter="0"/>
+		<e:Label id="kuohao" text="" y="597" size="24" horizontalCenter="0" width="500" textAlign="center" fontFamily="Microsoft YaHei" height="30"/>
+	</e:Group>
+</e:Skin>

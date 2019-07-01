@@ -1,0 +1,95 @@
+class Bomb extends ViewBase {
+
+	//定义初始化数据
+	private box1: CellBoom;
+	private box2: CellBoom;
+	private box3: CellBoom;
+	private guide: Guide;
+	private winNum: number;
+
+	public constructor() {
+		super();
+		console.log(1);
+	}
+
+	protected onload(): void {
+		this.skinName = BombSkin;
+	}
+
+	protected onshow() {
+		this.initData();
+		if (DataManager.levelIndex == 0) {
+			this.guide = new Guide();
+			this.addChild(this.guide);
+			GameEventManager.getInstance().addEventListener(GameEventManager.CLOSEGUIDE, this.readyGo, this);
+		} else {
+			this.readyGo();
+		}
+	}
+
+	private readyGo() {
+		var ready = new ReadyGo();
+		this.addChild(ready);
+		GameEventManager.getInstance().addEventListener(GameEventManager.READYGO, this.timeStart, this);
+		GameEventManager.getInstance().addEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+	}
+
+	protected initData() {
+		this.box1 = new CellBoom(1, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box1);
+
+		this.box2 = new CellBoom(2, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box2);
+		this.box2.x = 250;
+
+		this.box3 = new CellBoom(3, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box3);
+		this.box3.x = 500;
+
+		this.winNum = 0;
+		//this.timeStart();
+	}
+
+	protected timeStart() {
+		this.box1.startTime();
+		this.box2.startTime();
+		this.box3.startTime();
+	}
+
+	protected boomFalg(evt: egret.Event) {
+		console.log(evt.data.Falg, evt.data.index);
+		if (evt.data.Falg == false) {
+			this.result()
+		} else {
+			this.winNum = this.winNum + 1;
+			if (this.winNum == 3) {
+				this.result()
+			}
+		}
+	};
+
+	protected result() {
+		GameEventManager.getInstance().removeEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+		GameEventManager.getInstance().removeEventListener(GameEventManager.CLOSEGUIDE, this.timeStart, this);
+		GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.initData, this);
+		if (this.winNum == 3) {
+			console.log("成功~~~~~~~~~~~~");
+			if (DataManager.levelIndex < 2) {
+				DataManager.levelIndex++;
+			}
+			var calculate = new Calculate();
+			LayerManager.addChildLayer(calculate);
+			LayerManager.removeChildLayer(this);
+			DataManager.totalScore += 50;
+		} else {
+			console.log("失败~~~~~~~~~~~~");
+			this.box1.stopTime();
+			this.box2.stopTime();
+			this.box3.stopTime();
+			var result = new Result();
+			LayerManager.addChildLayer(result);
+			LayerManager.removeChildLayer(this);
+		}
+	};
+
+}

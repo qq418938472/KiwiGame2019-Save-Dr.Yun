@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="cellBoomSkin" width="250" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697b01ad21" ></w:Config>
+	<e:Group width="250" height="1334" x="0" y="0">
+		<e:Image id="btnBg" width="232" height="242" y="1076.39" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" horizontalCenter="0" source="btn_yellow_png"/>
+		<e:Button id="button" label="" x="10.87" y="1081.09" anchorOffsetX="0" width="234" anchorOffsetY="0" height="242" scaleX="1" scaleY="1">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="resource/assets/Calculate/btn_stop.png" source.down="resource/assets/Calculate/btn_stop.png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Group id="countDownGroup" width="250" height="370" x="0" y="260">
+			<e:Image width="207" height="361" source="bom_png" y="5" x="22"/>
+			<e:Image width="44" height="63" x="28.87" y="203" source="num_green_0_png"/>
+			<e:Image width="44" height="63" x="70.79" y="203" source="num_green_0_png"/>
+			<e:Image width="44" height="63" x="134.71" y="203" source="num_green_0_png"/>
+			<e:Image width="44" height="63" x="178.32" y="203" source="num_green_0_png"/>
+			<e:Image width="44" height="63" x="102" y="203" source="num_green_png"/>
+		</e:Group>
+		<e:Group id="countDownGroup1" width="250" height="200" x="0.88" y="680.66">
+			<e:Image width="44" height="63" x="28.87" y="203" source="num_white_0_png"/>
+			<e:Image width="44" height="63" x="70.79" y="203" source="num_white_0_png"/>
+			<e:Image width="44" height="63" x="134.71" y="203" source="num_white_0_png"/>
+			<e:Image width="44" height="63" x="178.32" y="203" source="num_white_0_png"/>
+			<e:Image width="44" height="63" x="102" y="203" source="num_white_png"/>
+		</e:Group>
+		<e:Image id="feedback" width="230.25" height="187.88" x="121.46" y="762.5" anchorOffsetX="115.01" anchorOffsetY="94.13" source="ef_perfect_png" rotation="344.13" scaleX="3" scaleY="3"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GuidePageSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697a851320" ></w:Config>
+	<e:Image width="100%" height="100%" x="0" y="0" source="bg_jpg"/>
+	<e:Button id="guideBtn" label="故事简介" x="232.57" y="93.91" anchorOffsetX="0" width="284.85" anchorOffsetY="0" height="101.52"/>
+</e:Skin>

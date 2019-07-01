@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BoomWrongFeedBackSkin" width="620" height="505" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697f605648" ></w:Config>
+	<e:Image id="boomFeedBack" width="620" height="505" x="316" y="256" anchorOffsetX="316" anchorOffsetY="256" source="kabom_png"/>
+</e:Skin>

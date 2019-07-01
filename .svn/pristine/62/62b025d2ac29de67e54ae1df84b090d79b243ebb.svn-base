@@ -1,0 +1,7 @@
+class Level {
+	countDown: number;
+	handSpeed: number;
+	handAlpha: number;
+	boomCountDown: Array<number>;
+	boomLimitValue: number;
+}

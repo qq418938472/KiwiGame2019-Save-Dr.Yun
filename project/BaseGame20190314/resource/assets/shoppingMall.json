@@ -1,0 +1,116 @@
+[
+    {
+        "name": "vivox21_png",
+        "nameCH": "wivo X21",
+        "describe": "19:9屏幕比例与超窄U型槽，造就更大屏占比。结合3D玻璃后盖，带来惊艳外观。",
+        "price": 2998
+    },
+    {
+        "name": "mate10pro_png",
+        "nameCH": "华威 Mate10 pro",
+        "describe": "考究的四曲面玻璃设计，让光影在机身流转变幻，呈现别样的设计之美。",
+        "price": 3999
+    },
+    {
+        "name": "findx_png",
+        "nameCH": "oppe Find X",
+        "describe": "亮屏的瞬间，屏幕内容几乎充满了整个视野，这就是Find X曲面全景屏。",
+        "price": 4999
+    },
+    {
+        "name": "s9_png",
+        "nameCH": "三兴 S9+",
+        "describe": "智能可变光圈、暗光拍摄、凝时拍摄，强大的摄像功能让你记录生活点滴。",
+        "price": 6699
+    },
+    {
+        "name": "iphone8p_png",
+        "nameCH": "iphona8P",
+        "describe": "美在智慧，身形以玻璃凝成。精密的工艺，令机身无谓水溅和灰尘侵袭。",
+        "price": 7917
+    },
+    {
+        "name": "note9_png",
+        "nameCH": "三兴 Note9",
+        "describe": "强悍的手机功能，让你操控游刃有余。强大的优秀续航电池，为你提供更长时间的续航能力。",
+        "price": 8999
+    },
+    {
+        "name": "maters_png",
+        "nameCH": "华威 MateRS保十捷",
+        "describe": "迈向时代征程，融汇华为创新科技、保时捷设计、徕卡匠心，以科技演绎奢华之美。",
+        "price": 9999
+    },
+    {
+        "name": "ipadpro_png",
+        "nameCH": "iped pro",
+        "describe": "强大性能会让许多笔记本电脑都羡慕不已，不仅是满足你对当今电脑的种种需求，而且还超越预期。",
+        "price": 10200
+    },
+    {
+        "name": "iphonex_png",
+        "nameCH": "iphona X",
+        "describe": "超凡智能、外壳与显示屏浑然一体。一次对iPhone极尽纯粹的演绎，精工细造，精美绽放。",
+        "price": 12500
+    },
+    {
+        "name": "iphonexs_png",
+        "nameCH": "iphona XS",
+        "describe": "全新一代iPhone，比iPhone X更先进、更智能、更坚固，颜值更高。 ",
+        "price": 15000
+    },
+    {
+        "name": "iphonexsmax_png",
+        "nameCH": "iphona XS Max",
+        "describe": "全新一代iPhone，拥有iPhone迄今为止最大的显示屏和高智能仿生芯片。",
+        "price": 17000
+    },
+    {
+        "name": "macbookpro_png",
+        "nameCH": "mec Book pro",
+        "describe": "全新第八代Intel六核处理器，绚丽的视网膜显示屏，加入原彩显示技术32G内存，可流畅运行多个专业app ",
+        "price": 21988
+    },
+    {
+        "name": "waixingren_png",
+        "nameCH": "外星笔记本",
+        "describe": "i9-8950HK，512G SSD，GTX1080，超强性能，让你游戏告别卡顿。",
+        "price": 31499
+    },
+    {
+        "name": "wali_png",
+        "nameCH": "wari智能机器人",
+        "describe": "智能机器人，让你的生活变得方便快捷。无论是洗衣做饭还是打扫房间瓦力都可以帮你一一实现。",
+        "price": 48999
+    },
+    {
+        "name": "yiwa_png",
+        "nameCH": "yiwa智能机器人",
+        "describe": "超智能未来机器人，比瓦力更智能，是瓦力的亲密伴侣。",
+        "price": 58999
+    },
+    {
+        "name": "fengbao_png",
+        "nameCH": "冯宝",
+        "describe": "面容姣好，胸部丰满，身材高挑，皮肤白皙，完全不需要刻意打扮，但是害怕穿高跟鞋。",
+        "price": 69999
+    },
+    {
+        "name": "qidaimu_png",
+        "nameCH": "七代目",
+        "describe": "木叶的英雄，七代目村长，帅气幽默，是一个不折不扣的暖男。",
+        "price": 69999
+    },
+    {
+        "name": "tushansusu_png",
+        "nameCH": "凃山苏苏",
+        "describe": "呆萌而又迷糊，心地善良的小狐妖，总是携带各种零食，是个人见人爱的小妖精。",
+        "price": 129999
+    },
+    {
+        "name": "bawei_png",
+        "nameCH": "巴为",
+        "describe": "可以迷倒万千女性的容颜，温柔、善良、体贴、闷骚、腹黑、沉着冷静，是陪伴你的的不二之选。",
+        "price": 129999
+    }
+]

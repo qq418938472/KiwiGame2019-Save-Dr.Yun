@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ResultSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697c6d3f61" ></w:Config>
+	<e:Rect width="100%" height="100%" x="0" y="0"/>
+	<e:Image id="rotationBg" width="1582" height="1582" x="371.64" y="666.91" anchorOffsetX="806.06" anchorOffsetY="790.91" source="illuminate_png"/>
+	<e:Image width="700" height="1002" x="24.24" y="129.5" anchorOffsetX="0" anchorOffsetY="0" source="reasultBg_png"/>
+	<e:Button id="reStartBtn" label="" width="445" height="167" horizontalCenter="0" verticalCenter="464">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="reStartBtn_normal_png" source.down="reStartBtn_down_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Group id="countGroup" width="385.64" height="140" x="260" y="396.48" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image width="133" height="140" x="266.64" y="0" anchorOffsetX="0" anchorOffsetY="0" source="score5_png"/>
+		<e:Image width="133" height="140" x="170" y="0" anchorOffsetX="0" anchorOffsetY="0" source="score5_png"/>
+		<e:Image width="133" height="140" x="73" y="0" anchorOffsetX="0" anchorOffsetY="0" source="score4_png"/>
+		<e:Image width="133" height="140" x="-23.92" y="0" anchorOffsetX="0" anchorOffsetY="0" source="score5_png"/>
+	</e:Group>
+	<e:Rect width="100" height="100" x="352.82" y="567" anchorOffsetX="0" anchorOffsetY="0" ellipseHeight="124" ellipseWidth="124" fillColor="0xf2dada"/>
+	<e:Group id="inputGroup" width="480" height="124" x="135" y="820" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image width="481" height="123" y="0" anchorOffsetX="0" anchorOffsetY="0" source="input_box_png" x="0"/>
+		<e:Image id="tips" width="429.17" height="51.89" y="36.06" anchorOffsetX="0" anchorOffsetY="0" source="input_box2_png" x="24.65"/>
+	</e:Group>
+	<e:Label text="X 0" x="466" y="567" anchorOffsetX="0" width="162" anchorOffsetY="0" height="98" verticalAlign="middle" textAlign="center" size="80"/>
+</e:Skin>

@@ -1,0 +1,25 @@
+{
+  "16977f38334": {
+    "path": "View\\Storage.ts",
+    "class": "Storage",
+    "parentPath": ""
+  },
+  "169781d478c": {
+    "path": "View\\GameContent.ts",
+    "class": "GameContent",
+    "parentPath": ""
+  },
+    "1697b01ad21": {
+        "path": "View\\cellBoom.ts",
+        "class": "cellBoom",
+        "parentPath": ""
+    }
+  "1697a6aba7a": {
+    "path": "View\\GuidePage.ts",
+    "class": "GuidePage",
+    "parentPath": ""
+  },
+  "global": {
+    "globalAutoLayerMarkEnable": false
+  }
+}

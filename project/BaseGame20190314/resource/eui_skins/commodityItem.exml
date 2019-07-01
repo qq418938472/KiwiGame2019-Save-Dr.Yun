@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="commodityItem" width="550" height="268" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="165d0bccaaa"/>
+	<e:Group height="250" width="550" x="0" top="0">
+		<e:Rect id="backgroundRect" fillAlpha="1" strokeAlpha="0" ellipseWidth="20" ellipseHeight="20" strokeWeight="5" strokeColor="0x777777" width="550" height="250" x="0" y="0" scaleX="1" scaleY="1" fillColor="0xdadada"/>
+		<e:Image width="228" height="228" x="11" verticalCenter="0" y="11" scaleX="1" scaleY="1" source="frame_png"/>
+		<e:Label text="售价：" x="257" y="64" textColor="0x030305" fontFamily="Microsoft YaHei" scaleX="1" scaleY="1"/>
+		<e:Label id="price" text="{data.price}" x="349" y="65" fontFamily="Microsoft YaHei" textColor="0x030305" anchorOffsetX="0" width="184" scaleX="1" scaleY="1"/>
+		<e:Label text="{data.describe}" x="260" y="113" anchorOffsetX="0" width="276" anchorOffsetY="0" height="120" textColor="0x747171" size="24" fontFamily="Microsoft YaHei" scaleX="1" scaleY="1"/>
+		<e:Label x="250" y="16" size="36" textColor="0x030305" anchorOffsetX="0" width="281" textAlign="center" fontFamily="Microsoft YaHei" height="40" text="{data.nameCH}" scaleX="1" scaleY="1"/>
+		<e:Rect id="isHave" left="0" right="0" top="0" bottom="0" fillAlpha="0.2" ellipseWidth="30" ellipseHeight="30"/>
+		<e:Image width="219" height="219" x="15" y="15" source="{data.name}" anchorOffsetX="0" anchorOffsetY="0"/>
+		<e:Image id="have" width="122" height="127" x="0" y="0" source="have_png" visible="false"/>
+	</e:Group>
+</e:Skin>

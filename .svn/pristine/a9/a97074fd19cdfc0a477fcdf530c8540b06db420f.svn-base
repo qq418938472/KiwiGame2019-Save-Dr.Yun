@@ -1,0 +1,26 @@
+class BaseUI extends eui.Component{
+	public constructor() {
+		super();
+		this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this);
+	}
+	public onTouch(e:egret.TouchEvent){
+		e.stopImmediatePropagation();
+	}
+	protected addBtn(btn:eui.Image,func:Function){
+		// ButtonEffectManager.setImageButton(btn,func,this);
+	}
+	private isShow:boolean = false;
+	public show(){
+		if(this.isShow){
+			this.onClose();
+			return;
+		}
+		this.isShow = true;
+		// LayerManager.addSubUI(this);
+	}
+	public onClose(){
+		// LayerManager.removeSubUI(this);
+		this.isShow = false;
+		// UIManager.removeObj();
+	}
+}

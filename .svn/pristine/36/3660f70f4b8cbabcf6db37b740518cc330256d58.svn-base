@@ -1,0 +1,118 @@
+class Calculate extends ViewBase {
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = CalculateSkin;
+		this.initPage();
+		this.initNumbers();
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+	}
+
+	private addTouchEvent() {
+		this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startCountDown, this);
+		this.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.nextTitle, this);
+	}
+
+	private startCountDown() {
+		this.initNumbers();
+	}
+
+	private titleNums: Array<number>;
+	private choiceNums: Array<number>;
+	private labelGroup: eui.Group;
+	private numLabels: Array<eui.Label>;
+	private startBtn: eui.Button;
+	private nextBtn: eui.Button;
+	private ansNum: number;
+	private maskIndex: number;
+	private choiceGroup: eui.Group;
+	private choiceLabels: Array<eui.Label>;
+	private initPage() {
+		this.numLabels = [];
+		this.choiceNums = [];
+		this.choiceLabels = [];
+		this.maskIndex = 2;
+		for (var i = 0; i <= 2; i++) {
+			this.numLabels.push(<eui.Label>this.labelGroup.getChildAt(i));
+			var group = <eui.Group>this.choiceGroup.getChildAt(i);
+			group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.judge, this);
+			this.choiceLabels.push(<eui.Label>group.getChildAt(1));
+		}
+	}
+
+	private initNumbers() {
+		this.titleNums = [];
+		this.ansNum = Tools.GetRandomNum(1, 9);
+		var num0 = Tools.GetRandomNum(0, this.ansNum);
+		var num1 = this.ansNum - num0;
+		this.titleNums.push(num0);
+		this.titleNums.push(num1);
+		this.titleNums.push(this.ansNum);
+		this.setTitleNums();
+		console.log('开始随机第一题题目');
+		console.log(this.titleNums);
+	}
+
+	private nextTitle() {
+		var index = Tools.GetRandomNum(0, 100);
+		if (index < 40) {
+			this.maskIndex = 0;
+		} else if (40 < index && index < 80) {
+			this.maskIndex = 1;
+		} else {
+			this.maskIndex = 2;
+		}
+		if (this.maskIndex > 1) {
+			var num0 = Tools.GetRandomNum(0, this.ansNum);
+			var num1 = this.ansNum - num0;
+			this.titleNums[0] = num0;
+			this.titleNums[1] = num1;
+		} else {
+			let num = Tools.GetRandomNum(0, 9 - this.titleNums[this.maskIndex]);
+			this.ansNum = num + this.titleNums[this.maskIndex];
+			if (this.maskIndex == 0) {
+				this.titleNums[1] = num;
+			} else {
+				this.titleNums[0] = num;
+			}
+			this.titleNums[2] = this.ansNum = this.titleNums[this.maskIndex] + num;
+		}
+		this.setTitleNums();
+	}
+
+	private setTitleNums() {
+		this.numLabels.map((s, index) => {
+			s.text = String(this.titleNums[index]);
+		});
+		console.log(this.titleNums, '当前遮挡下标为', this.maskIndex);
+		this.setChoiceNums();
+	}
+
+	private setChoiceNums() {
+		this.choiceNums = [];
+		this.choiceNums.push(this.ansNum);
+		for (var i = 0; i <= 1; i++) {
+			var num = Tools.GetRandomNum(0, 9);
+			this.choiceNums.indexOf(num) == -1 ? this.choiceNums.push(num) : i--;
+		}
+		this.choiceNums = Tools.ArrayDisorder(this.choiceNums);
+		this.choiceLabels.map((s, index) => {
+			s.text = String(this.choiceNums[index]);
+		});
+		console.log('可选数组为', this.choiceNums);
+	}
+
+	private judge(e: egret.Event) {
+		var index = e.currentTarget.parent.getChildIndex(e.currentTarget);
+		if (index == this.ansNum) {
+			console.log('good');
+		} else {
+			console.log('bad');
+		}
+	}
+}

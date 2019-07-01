@@ -1,0 +1,30 @@
+class Guide extends ViewBase {
+
+	private closeBtn: eui.Image;
+
+	public constructor() {
+		super();
+		console.log(1);
+	}
+
+	protected onload(): void {
+		this.skinName = GuideSkin;
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+		this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.close, this);
+	}
+
+	protected close() {
+		GameEventManager.getInstance().dispatchEventWith(GameEventManager.CLOSEGUIDE);
+		this.hide();
+	}
+
+	
+	private addTouchEvent() {
+		
+	}
+
+
+}

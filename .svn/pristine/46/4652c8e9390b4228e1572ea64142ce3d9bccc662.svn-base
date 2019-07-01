@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StorySkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="16977f38334" ></w:Config>
+	<e:Image width="750" height="1334" x="0" y="0" source="mhbg_png"/>
+	<e:Image id="storyContent" width="698" height="919" source="mh1_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Button id="nextBtn" label="" x="444.25" y="1185.1" anchorOffsetX="0" width="275.45" anchorOffsetY="0" height="126.2">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_go1_png" source.down="btn_go2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>

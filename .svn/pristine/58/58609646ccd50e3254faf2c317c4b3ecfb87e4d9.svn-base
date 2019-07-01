@@ -1,0 +1,17 @@
+class Calculate extends ViewBase {
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = CalculateSkin;
+		this.addTouchEvent();
+		LayerManager.addChildLayer(this);
+	}
+
+	protected onshow() {
+	}
+
+	private addTouchEvent() {
+	}
+}

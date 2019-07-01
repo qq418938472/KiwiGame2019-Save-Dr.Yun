@@ -1,0 +1,43 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var Story = (function (_super) {
+    __extends(Story, _super);
+    function Story() {
+        var _this = _super.call(this) || this;
+        _this.bgIndex = 0;
+        return _this;
+    }
+    Story.getInstance = function () {
+        if (!this._instance) {
+            this._instance = new Story();
+        }
+        return this._instance;
+    };
+    Story.prototype.onload = function () {
+        this.skinName = StorySkin;
+        this.addTouchEvent();
+    };
+    Story.prototype.onshow = function () {
+    };
+    Story.prototype.addTouchEvent = function () {
+        this.nextBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.changeBg, this);
+    };
+    Story.prototype.changeBg = function () {
+        this.tipsLabel.text = '故事第' + ++this.bgIndex + '页';
+        if (this.bgIndex == 5) {
+            var calculate = new Calculate();
+            UIManager.getInstance().changeUI(calculate);
+            this.hide();
+        }
+    };
+    return Story;
+}(ViewBase));
+__reflect(Story.prototype, "Story");

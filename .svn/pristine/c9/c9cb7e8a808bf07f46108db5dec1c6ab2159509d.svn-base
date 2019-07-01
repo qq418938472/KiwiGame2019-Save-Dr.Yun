@@ -1,0 +1,274 @@
+class Calculate extends ViewBase {
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = CalculateSkin;
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+		Animation.getInstance().animationPlay('middleSlowlyShow', this, 250);
+		if (DataManager.levelIndex == 0 && DataManager.isFirstTimePlayCalculate) {
+			var guide = new Guide();
+			guide.type = 0;
+			this.addChild(guide);
+			GameEventManager.getInstance().addEventListener(GameEventManager.CLOSEGUIDE, this.showReady, this);
+		} else {
+			this.showReady();
+		}
+	}
+
+	private showReady() {
+		DataManager.isFirstTimePlayCalculate = false;
+		this.hand.visible = false;
+		this.feedback.visible = false;
+		var ready = new ReadyGo();
+		this.addChild(ready);
+		GameEventManager.getInstance().addEventListener(GameEventManager.READYGO, this.calculateReadyGo, this);
+	}
+
+	private calculateReadyGo() {
+		console.log(1);
+		this.initPage();
+		this.initNumbers();
+		this.initTimer();
+		Tools.audioArrPlay(['calculate_mp3', 'calculate_mp3']);
+	}
+
+	private addTouchEvent() {
+		this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startCountDown, this);
+	}
+
+	private startCountDown() {
+		this.initNumbers();
+	}
+
+	private titleNums: Array<number>;
+	private choiceNums: Array<number>;
+	private titleImgsGroup: eui.Group;
+	private titleNumImgs: Array<eui.Image>;
+	private startBtn: eui.Button;
+	private nextBtn: eui.Button;
+	private ansNum: number;
+	private maskIndex: number;
+	private choiceGroup: eui.Group;
+	private choiceImages: Array<eui.Image>;
+	private hollowIndex: number;
+	private hand: eui.Image;
+	private titleIndex: number;
+	private removeLabels: Array<eui.Label>;
+	private labelLocs: Array<number>;
+	private rightCount: number;
+	private countDownGroup: eui.Group;
+	private countDownNums: Array<eui.Image>;
+	private progress: eui.Image;
+	private feedback: eui.Image;
+	private groupChoices: Array<eui.Group>;
+	private initPage() {
+		this.choiceNums = [];
+		this.choiceImages = [];
+		this.removeLabels = [];
+		this.maskIndex = 2;
+		this.titleIndex = 0;
+		this.hand.alpha = DataManager.levels[DataManager.levelIndex].handAlpha;
+		this.titleNumImgs = [];
+		this.rightCount = 0;
+		this.progress.width = 0;
+		this.groupChoices = [];
+		for (var i = 0; i <= 2; i++) {
+			this.titleNumImgs.push(<eui.Image>this.titleImgsGroup.getChildAt(i));
+		}
+		for (var i = 0; i <= 2; i++) {
+			var group = <eui.Group>this.choiceGroup.getChildAt(i);
+			group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.judge, this);
+			group.touchEnabled = group.touchChildren = false;
+			this.groupChoices.push(group);
+			this.choiceImages.push(<eui.Image>group.getChildAt(1));
+		}
+	}
+
+	private initTimer() {
+		this.second = DataManager.levels[DataManager.levelIndex].calculateCountDown;
+		this.minutesecond = 0;
+		this.milliscond = 0;
+		this.timer = new egret.Timer(10, 0);
+		this.timer.addEventListener(egret.TimerEvent.TIMER, this.countDown, this);
+		this.timer.start();
+		this.countDownNums = [];
+		for (var i = 0; i <= 3; i++) {
+			this.countDownNums.push(<eui.Image>this.countDownGroup.getChildAt(i));
+		}
+	}
+
+	private initNumbers() {
+		this.titleNums = [];
+		this.ansNum = Tools.GetRandomNum(1, 9);
+		var num0 = Tools.GetRandomNum(0, this.ansNum);
+		var num1 = this.ansNum - num0;
+		this.titleNums.push(num0);
+		this.titleNums.push(num1);
+		this.titleNums.push(this.ansNum);
+		this.refresh();
+	}
+
+	private nextTitle() {
+		// this.labelHide();
+		var index = Tools.GetRandomNum(0, 100);
+		if (index < 40) {
+			this.maskIndex = 0;
+		} else if (40 < index && index < 80) {
+			this.maskIndex = 1;
+		} else {
+			this.maskIndex = 2;
+		}
+		if (this.maskIndex > 1) {
+			var num0 = Tools.GetRandomNum(0, this.ansNum);
+			var num1 = this.ansNum - num0;
+			this.titleNums[0] = num0;
+			this.titleNums[1] = num1;
+		} else {
+			let num = Tools.GetRandomNum(0, 9 - this.titleNums[this.maskIndex]);
+			this.ansNum = num + this.titleNums[this.maskIndex];
+			if (this.maskIndex == 0) {
+				this.titleNums[1] = num;
+			} else {
+				this.titleNums[0] = num;
+			}
+			this.titleNums[2] = this.ansNum = this.titleNums[this.maskIndex] + num;
+		}
+		this.refresh();
+	}
+
+	private refresh() {
+		this.setTouch(true);
+		this.setQuestionNum();
+		this.setTitleNums();
+		this.setChoiceNums();
+		if (this.titleIndex != 0) {
+			this.hand.visible = true;
+			egret.Tween.get(this.hand)
+				.to({ y: 230 }, DataManager.levels[DataManager.levelIndex].handSpeed)
+				.to({
+					x: this.titleNumImgs[this.maskIndex].x - 27,
+					y: this.titleNumImgs[this.maskIndex].y - 19
+				}, DataManager.levels[DataManager.levelIndex].handSpeed)
+		}
+	}
+
+	private setQuestionNum() {
+		var indexs = [0, 1, 2];
+		indexs = indexs.filter((s) => s !== this.maskIndex);
+		var num = Tools.GetRandomNum(0, 1);
+		this.hollowIndex = indexs[num];
+	}
+
+	private setTitleNums() {
+		this.titleNumImgs.map((s, index) => {
+			s.source = index !== this.hollowIndex ? "topic" + this.titleNums[index] + "_png" : 'topic_png';
+			s.name = String(this.titleNums[index]);
+		});
+	}
+
+	private setTouch(isTouch: boolean) {
+		this.groupChoices.map((s) => {
+			s.touchEnabled = s.touchChildren = isTouch;
+		})
+	}
+
+	private setChoiceNums() {
+		this.choiceNums = [];
+		this.choiceNums.push(this.titleNums[this.hollowIndex]);
+		for (var i = 0; i <= 1; i++) {
+			var num = Tools.GetRandomNum(0, 9);
+			this.choiceNums.indexOf(num) == -1 ? this.choiceNums.push(num) : i--;
+		}
+		this.choiceNums = Tools.ArrayDisorder(this.choiceNums);
+		this.choiceImages.map((s, index) => {
+			s.source = "btn_" + this.choiceNums[index] + "_png";
+			s.name = String(this.choiceNums[index]);
+		});
+	}
+
+	private judge(e: egret.Event) {
+		var img = e.currentTarget.getChildAt(1);
+		this.setTouch(false);
+		if (Number(img.name) == this.titleNums[this.hollowIndex]) {
+			Tools.audioPlay('right_mp3');
+			this.titleIndex++;
+			this.rightCount++;
+			this.titleNumImgs[this.hollowIndex].source = "topic0_" + img.name + "_png";
+			this.titleNumImgs[this.hollowIndex].name = img.name;
+			DataManager.totalScore += 10;
+			egret.Tween.get(this.progress)
+				.to({ width: this.rightCount * 125 }, 100)
+			egret.Tween.get(this)
+				.wait(DataManager.levels[DataManager.levelIndex].changeTitleSpeed)
+				.call(this.nextTitle)
+			if (this.rightCount == 5) {
+				this.changeBoomLayer();
+			}
+			egret.Tween.get(this.feedback)
+				.to({ visible: true, scaleX: 10, scaleY: 10, x: 374, y: 852 }, 0)
+				.to({ scaleX: 0.5, scaleY: 0.5, x: 539, y: 867 }, 200, egret.Ease.circIn)
+				.to({ scaleX: 1.2, scaleY: 1.2, x: 539, y: 867 }, 100)
+				.to({ scaleX: 1, scaleY: 1, x: 539, y: 867 }, 100)
+		} else {
+			Tools.audioStop();
+			var wrongTips = new WrongFeedBack();
+			this.addChild(wrongTips);
+			this.timer.stop();
+			egret.Tween.get(this)
+				.wait(1400)
+				.call(() => {
+					var result = new Result();
+					GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.calculateReadyGo, this);
+					LayerManager.addChildLayer(result);
+					LayerManager.removeChildLayer(this);
+					Tools.audioPlay('result_mp3');
+				})
+		}
+	}
+
+	private second: number;
+	private minutesecond: number;
+	private milliscond: number;
+	private timer: egret.Timer;
+	private coundDownTimer: eui.Label;
+	protected countDown() {
+		this.milliscond = this.milliscond - 1
+		if (this.milliscond <= 0) {
+			if (0 + this.minutesecond > 1) {
+				this.minutesecond = this.minutesecond - 1;
+				this.milliscond = 9;
+			} else {
+				if (0 + this.second > 0) {
+					this.second = this.second - 1;
+					this.minutesecond = 9;
+					this.milliscond = 0;
+				} else {
+					this.milliscond = 0;
+					this.minutesecond = 0;
+					this.second = 0;
+					this.timer.stop();
+				}
+			}
+		}
+		this.countDownNums[0].source = this.second >= 10 ? "countdown" + String(this.second).substring(0, 1) + "_png" : "countdown0_png";
+		this.countDownNums[1].source = this.second >= 10 ? "countdown" + String(this.second).substring(1, 2) + "_png"
+			: "countdown" + String(this.second).substring(0, 1) + "_png";
+		this.countDownNums[2].source = "countdown" + this.minutesecond + "_png";
+		this.countDownNums[3].source = "countdown" + this.milliscond + "_png";
+	}
+
+	private changeBoomLayer() {
+		var boom = new Bomb();
+		GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.calculateReadyGo, this);
+		LayerManager.addChildLayer(boom);
+		LayerManager.removeChildLayer(this);
+		this.timer.stop();
+		Tools.audioStop();
+		this.dispose();
+	}
+}

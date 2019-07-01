@@ -1,0 +1,42 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var Tips = (function (_super) {
+    __extends(Tips, _super);
+    function Tips() {
+        return _super.call(this) || this;
+    }
+    Tips.getInstance = function () {
+        if (!this._instance) {
+            this._instance = new Tips();
+        }
+        return this._instance;
+    };
+    Tips.prototype.onload = function () {
+        this.tipsGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.hideTips, this);
+        this.hideTips();
+    };
+    Tips.prototype.showTips = function (text, kuohao) {
+        if (kuohao === void 0) { kuohao = ""; }
+        this.visible = true;
+        this.tips.text = text;
+        this.bg.height = 0;
+        this.kuohao.text = kuohao;
+        egret.Tween.get(this.bg).to({ height: 226 }, 100, egret.Ease.circInOut);
+    };
+    Tips.prototype.hideTips = function () {
+        var _this = this;
+        egret.Tween.get(this.bg).to({ height: 0 }, 100, egret.Ease.circInOut).call(function () {
+            _this.visible = false;
+        });
+    };
+    return Tips;
+}(ViewBase));
+__reflect(Tips.prototype, "Tips");

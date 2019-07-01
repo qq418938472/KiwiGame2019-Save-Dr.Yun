@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ReadyGoSkin" width="574" height="160" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="go" width="459" height="196" x="57.5" y="-18" source="go_png"/>
+	<e:Image id="ready" width="459" height="196" x="57.5" y="-18" anchorOffsetX="0" anchorOffsetY="0" source="ready_png"/>
+</e:Skin>

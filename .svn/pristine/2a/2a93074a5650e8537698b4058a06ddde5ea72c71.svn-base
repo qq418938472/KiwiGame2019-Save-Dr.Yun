@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BombSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="169781d478c" ></w:Config>
+	<e:Rect width="100%" height="100%" x="-1.39" y="-1.23"/>
+	<e:Image width="750" height="1334" x="0" y="0" source="gamebg2_jpg"/>
+	<e:Image width="750" height="57" x="0" y="0" source="warline_png"/>
+	<e:Image width="750" height="57" x="0" y="972.12" source="warline_png"/>
+</e:Skin>

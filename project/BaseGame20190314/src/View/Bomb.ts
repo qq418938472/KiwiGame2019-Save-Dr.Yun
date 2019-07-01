@@ -1,0 +1,154 @@
+class Bomb extends ViewBase {
+
+	//定义初始化数据
+	private box1: CellBoom;
+	private box2: CellBoom;
+	private box3: CellBoom;
+	private guide: Guide;
+	private winNum: number;
+
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = BombSkin;
+	}
+
+	private sound: egret.Sound;
+	private soundChennel: egret.SoundChannel;
+	protected onshow() {
+		this.initData();
+		if (DataManager.levelIndex == 0 && DataManager.isFirstTimePlayBoom) {
+			this.guide = new Guide();
+			this.guide.type = 1;
+			this.addChild(this.guide);
+			GameEventManager.getInstance().addEventListener(GameEventManager.CLOSEGUIDE, this.readyGo, this);
+		} else {
+			this.readyGo();
+		}
+		this.sound = new egret.Sound();
+		this.sound.load(RES.getRes("boom_mp3").url);
+		this.sound.addEventListener(egret.Event.COMPLETE, function (e: egret.Event) {
+			this.bgAudioPlay();
+		}, this);
+	}
+
+	private readyGo() {
+		GameEventManager.getInstance().removeEventListener(GameEventManager.CLOSEGUIDE, this.readyGo, this);
+		DataManager.isFirstTimePlayBoom = false;
+		var ready = new ReadyGo();
+		this.addChild(ready);
+		GameEventManager.getInstance().addEventListener(GameEventManager.READYGO, this.timeStart, this);
+		GameEventManager.getInstance().addEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+	}
+
+	protected initData() {
+		this.box1 = new CellBoom(1, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box1);
+
+		this.box2 = new CellBoom(2, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box2);
+		this.box2.x = 250;
+
+		this.box3 = new CellBoom(3, DataManager.levels[DataManager.levelIndex].boomLimitValue);
+		this.addChild(this.box3);
+		this.box3.x = 500;
+
+		this.winNum = 0;
+		//this.timeStart();
+	}
+
+	protected timeStart() {
+		GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.timeStart, this);
+		this.box1.startTime();
+		this.box2.startTime();
+		this.box3.startTime();
+	}
+
+	protected boomFalg(evt: egret.Event) {
+		console.log(evt.data.Falg);
+		if (evt.data.Falg == false) {
+			GameEventManager.getInstance().removeEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+			this.result()
+		} else {
+			Tools.audioPlay('right_mp3');
+			this.winNum = this.winNum + 1;
+			if (this.winNum == 3) {
+				GameEventManager.getInstance().removeEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+				this.result()
+			}
+		}
+	};
+
+	protected result() {
+		GameEventManager.getInstance().removeEventListener(GameEventManager.CLOSEGUIDE, this.timeStart, this);
+		GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.initData, this);
+		if (this.winNum == 3) {
+			DataManager.savePeopleNum++;
+			this.bgAudioStop();
+			if (DataManager.levelIndex < 2) {
+				DataManager.levelIndex++;
+			}
+			var guide = new Guide();
+			guide.type = 2;
+			this.addChild(guide);
+			Tools.audioPlay('success_mp3');
+			GameEventManager.getInstance().addEventListener(GameEventManager.BACK, this.changeCalculate, this);
+		} else {
+			this.box1.stopTime();
+			this.box2.stopTime();
+			this.box3.stopTime();
+			var boomFeedBack = new BoomWrongFeedBack();
+			this.addChild(boomFeedBack);
+			egret.Tween.get(this)
+				.wait(2000)
+				.call(() => {
+					this.bgAudioStop();
+					LayerManager.removeChildLayer(this);
+					var result = new Result();
+					LayerManager.addChildLayer(result);
+				})
+		}
+	};
+
+	private changeCalculate() {
+		GameEventManager.getInstance().removeEventListener(GameEventManager.BACK, this.changeCalculate, this);
+		egret.Tween.get(this)
+			.wait(500)
+			.call(() => {
+				Tools.audioStop();
+				var calculate = new Calculate();
+				LayerManager.addChildLayer(calculate);
+				LayerManager.removeChildLayer(this);
+				DataManager.totalScore += 50;
+			})
+	}
+
+	private bgAudioPlay(): void {
+		this.soundChennel = this.sound.play(this._pauseTime, -1);
+		this.soundChennel.addEventListener(egret.Event.SOUND_COMPLETE, this.onComplete, this);
+	}
+
+	private onComplete(e: egret.Event): void {
+		this.bgAudioStop();
+	}
+
+	//停止
+	private bgAudioStop(): void {
+		if (this.soundChennel) {
+			this.soundChennel.removeEventListener(egret.Event.SOUND_COMPLETE, this.onComplete, this);
+			this.soundChennel.stop();
+			this.soundChennel = null;
+		}
+	}
+
+	//暂停
+	private _pauseTime: number = 0;
+	private bgAudioPause() {
+		if (this.soundChennel) {
+			this._pauseTime = this.soundChennel.position;
+			this.bgAudioStop();
+		}
+	}
+}

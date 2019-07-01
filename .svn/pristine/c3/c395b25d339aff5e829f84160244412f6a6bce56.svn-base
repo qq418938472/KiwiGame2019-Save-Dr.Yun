@@ -1,0 +1,28 @@
+class PopUpManager extends egret.DisplayObjectContainer {
+	public constructor() {
+		super();
+	}
+
+	public static _instance: PopUpManager;
+	public static getInstance(): PopUpManager {
+		if (!this._instance) {
+			this._instance = new PopUpManager();
+		}
+		return this._instance;
+	}
+
+	// 调用参考 
+    /**
+    * 添加面板方法
+    */
+	public addPopUp(panel: ViewBase): void {
+		if (this.getChildIndex(panel) == -1) {
+			this.addChild(panel);
+		}
+	}
+
+	/**打开Supermarket */
+	// public openSupermarket() {
+		// this.addPopUp(Supermarket.getInstance());
+	// }
+}

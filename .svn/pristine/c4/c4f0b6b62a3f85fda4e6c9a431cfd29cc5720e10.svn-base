@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="CalculateSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="169781d478c" ></w:Config>
+	<e:Rect width="100%" height="100%" x="0" y="0"/>
+	<e:Image width="100%" height="100%" x="0" y="0" source="calculateBg_jpg"/>
+	<e:Group width="625" height="47" x="48.9" y="50" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image width="625" height="47" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="progress_bar1_png"/>
+		<e:Image id="progress" width="0" height="47" x="6.72" y="0" source="progress_bar2_png"/>
+	</e:Group>
+	<e:Group id="countDownGroup" width="496.67" height="157.79" x="113.64" y="266.67" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image width="108" height="129" x="19.06" y="11.85" anchorOffsetX="0" anchorOffsetY="0" source="countdown0_png"/>
+		<e:Image width="108" height="129" x="114.39" y="11.85" anchorOffsetX="0" anchorOffsetY="0" source="countdown0_png"/>
+		<e:Image width="108" height="129" x="276.01" y="11.85" anchorOffsetX="0" anchorOffsetY="0" source="countdown0_png"/>
+		<e:Image width="108" height="129" x="375.69" y="11.85" anchorOffsetX="0" anchorOffsetY="0" source="countdown0_png"/>
+		<e:Image width="108" height="129" x="193.76" y="21.17" anchorOffsetX="0" anchorOffsetY="0" source="countdown_png"/>
+	</e:Group>
+	<e:Group id="titleImgsGroup" width="100%" height="500" x="0" y="532" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image width="75" height="91" x="135.36" y="62" source="topic_png"/>
+		<e:Image width="75" height="91" x="334" y="62" source="topic_png"/>
+		<e:Image width="75" height="91" x="521" y="62" source="topic_png"/>
+		<e:Image width="75" height="91" x="232.4" y="62" source="topicadd_png"/>
+		<e:Image width="75" height="91" x="428" y="62" source="topicequal_png"/>
+		<e:Image id="hand" width="113" height="127.44" x="315" y="256.08" source="hand_png" anchorOffsetX="0" anchorOffsetY="0"/>
+	</e:Group>
+	<e:Button id="startBtn" label="开始" x="262" y="916" anchorOffsetX="0" width="210" anchorOffsetY="0" height="100" visible="false"/>
+	<e:Group id="choiceGroup" width="100%" height="296" y="1037.33" anchorOffsetX="0" anchorOffsetY="0" x="0">
+		<e:Group width="232" height="242" x="8" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="232" height="242" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="btn_yellow_png"/>
+			<e:Image width="118" height="151" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0" x="57" source="btn_1_png"/>
+		</e:Group>
+		<e:Group width="232" height="242" x="259" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="232" height="242" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="btn_blue_png"/>
+			<e:Image width="118" height="151" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" x="57" y="46" source="btn_4_png"/>
+		</e:Group>
+		<e:Group width="232" height="242" x="510" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="232" height="242" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="btn_red_png"/>
+			<e:Image width="118" height="151" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" x="57" y="45.5" source="btn_6_png"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

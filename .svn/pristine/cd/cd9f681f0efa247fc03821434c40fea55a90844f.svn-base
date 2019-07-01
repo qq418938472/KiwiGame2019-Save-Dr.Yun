@@ -1,0 +1,315 @@
+{
+	"groups": [
+		{
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,frame_png,have_png,haveCount_png,tips_png,maters_png,note9_png,paoMian_png,qidaimu_png,s9_png,shouBan_png,shuPian_png,siQuChe_png,tushansusu_png,vivox21_png,waixingren_png,wali_png,wuRenJi_png,xiangLiang_png,yiwa_png,youXiJi_png,bawei_png,block_png,fengbao_png,findx_png,ipadpro_png,iphone8p_png,iphonex_png,iphonexs_png,iphonexsmax_png,laTiao_png,macbookpro_png,mate10pro_png,close_png,shoppingMall_json,level_json",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "checkbox_select_disabled_png",
+			"type": "image",
+			"url": "assets/CheckBox/checkbox_select_disabled.png"
+		},
+		{
+			"name": "checkbox_select_down_png",
+			"type": "image",
+			"url": "assets/CheckBox/checkbox_select_down.png"
+		},
+		{
+			"name": "checkbox_select_up_png",
+			"type": "image",
+			"url": "assets/CheckBox/checkbox_select_up.png"
+		},
+		{
+			"name": "checkbox_unselect_png",
+			"type": "image",
+			"url": "assets/CheckBox/checkbox_unselect.png"
+		},
+		{
+			"name": "selected_png",
+			"type": "image",
+			"url": "assets/ItemRenderer/selected.png"
+		},
+		{
+			"name": "border_png",
+			"type": "image",
+			"url": "assets/Panel/border.png"
+		},
+		{
+			"name": "header_png",
+			"type": "image",
+			"url": "assets/Panel/header.png"
+		},
+		{
+			"name": "radiobutton_select_disabled_png",
+			"type": "image",
+			"url": "assets/RadioButton/radiobutton_select_disabled.png"
+		},
+		{
+			"name": "radiobutton_select_down_png",
+			"type": "image",
+			"url": "assets/RadioButton/radiobutton_select_down.png"
+		},
+		{
+			"name": "radiobutton_select_up_png",
+			"type": "image",
+			"url": "assets/RadioButton/radiobutton_select_up.png"
+		},
+		{
+			"name": "radiobutton_unselect_png",
+			"type": "image",
+			"url": "assets/RadioButton/radiobutton_unselect.png"
+		},
+		{
+			"name": "roundthumb_png",
+			"type": "image",
+			"url": "assets/ScrollBar/roundthumb.png"
+		},
+		{
+			"name": "thumb_png",
+			"type": "image",
+			"url": "assets/Slider/thumb.png"
+		},
+		{
+			"name": "track_png",
+			"type": "image",
+			"url": "assets/Slider/track.png"
+		},
+		{
+			"name": "tracklight_png",
+			"type": "image",
+			"url": "assets/Slider/tracklight.png"
+		},
+		{
+			"name": "handle_png",
+			"type": "image",
+			"url": "assets/ToggleSwitch/handle.png"
+		},
+		{
+			"name": "off_png",
+			"type": "image",
+			"url": "assets/ToggleSwitch/off.png"
+		},
+		{
+			"name": "on_png",
+			"type": "image",
+			"url": "assets/ToggleSwitch/on.png"
+		},
+		{
+			"name": "button_down_png",
+			"type": "image",
+			"url": "assets/Button/button_down.png"
+		},
+		{
+			"name": "button_up_png",
+			"type": "image",
+			"url": "assets/Button/button_up.png"
+		},
+		{
+			"name": "thumb_pb_png",
+			"type": "image",
+			"url": "assets/ProgressBar/thumb_pb.png"
+		},
+		{
+			"name": "track_pb_png",
+			"type": "image",
+			"url": "assets/ProgressBar/track_pb.png"
+		},
+		{
+			"name": "track_sb_png",
+			"type": "image",
+			"url": "assets/ScrollBar/track_sb.png"
+		},
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "frame_png",
+			"type": "image",
+			"url": "assets/frame.png"
+		},
+		{
+			"name": "have_png",
+			"type": "image",
+			"url": "assets/have.png"
+		},
+		{
+			"name": "haveCount_png",
+			"type": "image",
+			"url": "assets/haveCount.png"
+		},
+		{
+			"name": "tips_png",
+			"type": "image",
+			"url": "assets/tips.png"
+		},
+		{
+			"name": "maters_png",
+			"type": "image",
+			"url": "assets/material/maters.png"
+		},
+		{
+			"name": "note9_png",
+			"type": "image",
+			"url": "assets/material/note9.png"
+		},
+		{
+			"name": "paoMian_png",
+			"type": "image",
+			"url": "assets/material/paoMian.png"
+		},
+		{
+			"name": "qidaimu_png",
+			"type": "image",
+			"url": "assets/material/qidaimu.png"
+		},
+		{
+			"name": "s9_png",
+			"type": "image",
+			"url": "assets/material/s9.png"
+		},
+		{
+			"name": "shouBan_png",
+			"type": "image",
+			"url": "assets/material/shouBan.png"
+		},
+		{
+			"name": "shuPian_png",
+			"type": "image",
+			"url": "assets/material/shuPian.png"
+		},
+		{
+			"name": "siQuChe_png",
+			"type": "image",
+			"url": "assets/material/siQuChe.png"
+		},
+		{
+			"name": "tushansusu_png",
+			"type": "image",
+			"url": "assets/material/tushansusu.png"
+		},
+		{
+			"name": "vivox21_png",
+			"type": "image",
+			"url": "assets/material/vivox21.png"
+		},
+		{
+			"name": "waixingren_png",
+			"type": "image",
+			"url": "assets/material/waixingren.png"
+		},
+		{
+			"name": "wali_png",
+			"type": "image",
+			"url": "assets/material/wali.png"
+		},
+		{
+			"name": "wuRenJi_png",
+			"type": "image",
+			"url": "assets/material/wuRenJi.png"
+		},
+		{
+			"name": "xiangLiang_png",
+			"type": "image",
+			"url": "assets/material/xiangLiang.png"
+		},
+		{
+			"name": "yiwa_png",
+			"type": "image",
+			"url": "assets/material/yiwa.png"
+		},
+		{
+			"name": "youXiJi_png",
+			"type": "image",
+			"url": "assets/material/youXiJi.png"
+		},
+		{
+			"name": "bawei_png",
+			"type": "image",
+			"url": "assets/material/bawei.png"
+		},
+		{
+			"name": "block_png",
+			"type": "image",
+			"url": "assets/material/block.png"
+		},
+		{
+			"name": "fengbao_png",
+			"type": "image",
+			"url": "assets/material/fengbao.png"
+		},
+		{
+			"name": "findx_png",
+			"type": "image",
+			"url": "assets/material/findx.png"
+		},
+		{
+			"name": "ipadpro_png",
+			"type": "image",
+			"url": "assets/material/ipadpro.png"
+		},
+		{
+			"name": "iphone8p_png",
+			"type": "image",
+			"url": "assets/material/iphone8p.png"
+		},
+		{
+			"name": "iphonex_png",
+			"type": "image",
+			"url": "assets/material/iphonex.png"
+		},
+		{
+			"name": "iphonexs_png",
+			"type": "image",
+			"url": "assets/material/iphonexs.png"
+		},
+		{
+			"name": "iphonexsmax_png",
+			"type": "image",
+			"url": "assets/material/iphonexsmax.png"
+		},
+		{
+			"name": "laTiao_png",
+			"type": "image",
+			"url": "assets/material/laTiao.png"
+		},
+		{
+			"name": "macbookpro_png",
+			"type": "image",
+			"url": "assets/material/macbookpro.png"
+		},
+		{
+			"name": "mate10pro_png",
+			"type": "image",
+			"url": "assets/material/mate10pro.png"
+		},
+		{
+			"name": "close_png",
+			"type": "image",
+			"url": "assets/close.png"
+		},
+		{
+			"name": "shoppingMall_json",
+			"type": "json",
+			"url": "assets/shoppingMall.json"
+		},
+		{
+			"name": "level_json",
+			"type": "json",
+			"url": "assets/level/level.json"
+		}
+	]
+}

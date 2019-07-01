@@ -1,0 +1,66 @@
+class Bomb extends ViewBase {
+
+	//定义初始化数据
+	private box1 :cellBoom;
+	private box2 :cellBoom;
+	private box3 :cellBoom;
+	private winNum :number;
+
+	public constructor() {
+		super();
+		console.log(1);
+	}
+
+	protected onload(): void {
+		this.skinName = BombSkin;
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+		this.initData();
+	}
+
+	protected initData() {
+		this.box1 = new cellBoom(1,0.5);
+		this.addChild(this.box1);
+
+		this.box2 = new cellBoom(2,0.5);
+		this.addChild(this.box2);
+		this.box2.x = 250;
+
+		this.box3 = new cellBoom(3,0.5);
+		this.addChild(this.box3);
+		this.box3.x = 500;
+
+		this.winNum = 0;
+	}
+
+	private addTouchEvent() {
+		GameEventManager.getInstance().addEventListener(GameEventManager.BOOMFALG, this.boomFalg, this);
+	}
+
+	protected boomFalg(evt:egret.Event){
+		console.log(evt.data.Falg, evt.data.index);
+
+		if (evt.data.Falg == false ) {
+			this.result()
+		}else{
+			this.winNum = this.winNum + 1;
+			if (this.winNum == 3){
+				this.result()
+			}
+		}
+	};
+
+	protected result(){
+		if (this.winNum == 3){
+			console.log("成功~~~~~~~~~~~~");
+		}else{
+			console.log("失败~~~~~~~~~~~~");
+			this.box1.stopTime();
+			this.box2.stopTime();
+			this.box3.stopTime();
+		} 
+	};
+
+}

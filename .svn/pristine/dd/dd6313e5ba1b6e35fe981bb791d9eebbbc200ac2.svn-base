@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="cellBoomSkin" width="250" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697b01ad21" ></w:Config>
+	<e:Group width="250" height="1334" x="0" y="0">
+		<e:Button id="button" label="" x="11.36" y="1085.44" anchorOffsetX="0" width="227.27" anchorOffsetY="0" height="232.77" scaleX="1" scaleY="1"/>
+		<e:Label id="buttonStr" text="stop" y="1186.83" horizontalCenter="-0.5"/>
+		<e:Label id="countTime" text="0:00" horizontalCenter="-0.5" y="455.01" x="96" scaleX="1" scaleY="1"/>
+		<e:Label id="leftTime" text="0:00" horizontalCenter="-2.5" y="819.53" x="106" scaleX="1" scaleY="1"/>
+		<e:Label id="goodStrt" text="" horizontalCenter="-1" y="783.12" x="106" scaleX="1" scaleY="1"/>
+	</e:Group>
+</e:Skin>

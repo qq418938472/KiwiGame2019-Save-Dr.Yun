@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="cellBoomSkin" width="250" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697b01ad21" ></w:Config>
+	<e:Group width="250" height="1334" x="0" y="0">
+		<e:Label id="countTime" text="0:00" horizontalCenter="-0.5" y="455.01" x="96" scaleX="1" scaleY="1"/>
+		<e:Label id="leftTime" text="0:00" horizontalCenter="-2.5" y="819.53" x="106" scaleX="1" scaleY="1"/>
+		<e:Label id="goodStrt" text="" horizontalCenter="-1" y="783.12" x="106" scaleX="1" scaleY="1"/>
+		<e:Image id="btnBg" width="232" height="242" y="1076.39" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" horizontalCenter="0" source="btn_yellow_png"/>
+		<e:Button id="button" label="" x="10.87" y="1081.09" anchorOffsetX="0" width="234" anchorOffsetY="0" height="242" scaleX="1" scaleY="1">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="resource/assets/Calculate/btn_stop.png" source.down="resource/assets/Calculate/btn_stop.png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Group width="250" height="370" x="0" y="421">
+			<e:Image width="207" height="361" horizontalCenter="0" verticalCenter="0" source="bom_png"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

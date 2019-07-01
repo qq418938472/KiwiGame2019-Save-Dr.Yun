@@ -1,0 +1,21 @@
+class ReadyGo extends ViewBase {
+	public constructor() {
+		super()
+	}
+
+	protected onload(): void {
+		this.skinName = ReadyGoSkin;
+	}
+
+	private label: eui.Label;
+	protected onshow() {
+		egret.Tween.get(this)
+			.to({ x: 750, y: 450 }, 0)
+			.to({ x: 200, y: 450 }, 500)
+			.to({ x: 0, y: 450 }, 1500)
+			.to({ x: -750, y: 450 }, 500, egret.Ease.quadInOut)
+			.call(() => {
+				GameEventManager.getInstance().dispatchEventWith(GameEventManager.READYGO);
+			})
+	}
+}

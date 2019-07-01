@@ -1,0 +1,33 @@
+[
+    {
+        "countDown": 20,
+        "handSpeed": 200,
+        "handAlpha": 0,
+        "changeTitleSpeed": 0,
+        "boomCountDown": [
+            6,
+            8
+        ],
+        "boomLimitValue": 0.5
+    },
+    {
+        "countDown": 15,
+        "handSpeed": 150,
+        "handAlpha": 0.7,
+        "boomCountDown": [
+            3,
+            5
+        ],
+        "boomLimitValue": 0.35
+    },
+    {
+        "countDown": 10,
+        "handSpeed": 75,
+        "handAlpha": 1,
+        "boomCountDown": [
+            2,
+            3
+        ],
+        "boomLimitValue": 0.2
+    }
+]

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="CalculateSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="169781d478c" ></w:Config>
+	<e:Rect width="100%" height="100%" x="0" y="0"/>
+	<e:Group width="100%" height="100" x="0" y="6" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Label text="进度条" x="113.64" anchorOffsetX="0" width="536" anchorOffsetY="0" height="80" verticalAlign="middle" textAlign="center" size="50" y="10"/>
+	</e:Group>
+	<e:Group width="100%" height="134" x="0" y="108" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Label text="倒计时" x="264" anchorOffsetX="0" width="234" anchorOffsetY="0" height="68" verticalAlign="middle" textAlign="center" size="50" y="33"/>
+	</e:Group>
+	<e:Group id="labelGroup" width="100%" height="240" x="0" y="532" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Label text="1" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" verticalAlign="middle" textAlign="center" size="100" scaleX="1" scaleY="1" x="24" y="45"/>
+		<e:Label text="1" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" verticalAlign="middle" textAlign="center" size="100" scaleX="1" scaleY="1" x="300" y="45"/>
+		<e:Label text="1" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" verticalAlign="middle" textAlign="center" size="100" scaleX="1" scaleY="1" x="580" y="45"/>
+		<e:Label text="+" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" verticalAlign="middle" textAlign="center" size="100" scaleX="1" scaleY="1" x="160" y="45"/>
+		<e:Label text="=" anchorOffsetX="0" width="150" anchorOffsetY="0" height="150" verticalAlign="middle" textAlign="center" size="100" scaleX="1" scaleY="1" x="440" y="45"/>
+	</e:Group>
+	<e:Button id="startBtn" label="开始" x="130" y="878" anchorOffsetX="0" width="210" anchorOffsetY="0" height="100"/>
+	<e:Button id="nextBtn" label="下一题" x="410" y="878" anchorOffsetX="0" width="210" anchorOffsetY="0" height="100"/>
+	<e:Group id="choiceGroup" width="100%" height="236" y="1097.33" anchorOffsetX="0" anchorOffsetY="0" x="0">
+		<e:Group width="200" height="200" x="14.97" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="180" height="182.67" x="10.67" y="9" anchorOffsetX="0" anchorOffsetY="0"/>
+			<e:Label text="1" x="39.71" y="40" anchorOffsetX="0" width="121.93" anchorOffsetY="0" height="120.67" verticalAlign="middle" textAlign="center" size="80"/>
+		</e:Group>
+		<e:Group width="200" height="200" x="272" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="180" height="182.67" x="10.67" y="9" anchorOffsetX="0" anchorOffsetY="0"/>
+			<e:Label text="1" x="39.71" y="40" anchorOffsetX="0" width="121.93" anchorOffsetY="0" height="120.67" verticalAlign="middle" textAlign="center" size="80"/>
+		</e:Group>
+		<e:Group width="200" height="200" x="530" y="21" anchorOffsetX="0" anchorOffsetY="0">
+			<e:Image width="180" height="182.67" x="10.67" y="9" anchorOffsetX="0" anchorOffsetY="0"/>
+			<e:Label text="1" x="39.71" y="40" anchorOffsetX="0" width="121.93" anchorOffsetY="0" height="120.67" verticalAlign="middle" textAlign="center" size="80"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

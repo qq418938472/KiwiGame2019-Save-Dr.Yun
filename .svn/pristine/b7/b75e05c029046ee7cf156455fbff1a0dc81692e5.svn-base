@@ -1,0 +1,29 @@
+class UIManager extends egret.DisplayObjectContainer {
+	public constructor() {
+		super();
+	}
+
+	public static _instance: UIManager;
+	public static getInstance(): UIManager {
+		if (!this._instance) {
+			this._instance = new UIManager();
+		}
+		return this._instance;
+	}
+	// 调用参考 
+    /**
+    * 添加面板方法
+    */
+	public openStory(): void {
+		if (this.getChildIndex(Story.getInstance()) == -1) {
+			this.addChild(Story.getInstance());
+		}
+	}
+
+	public changeUI(panel: ViewBase) {
+		if (this.getChildIndex(panel) == -1) {
+			this.addChild(panel);
+		}
+	}
+
+}

@@ -1,0 +1,27 @@
+class Guide extends ViewBase {
+
+	private goBoomBtn: eui.Button;
+	private goCalculateBtn: eui.Button;
+	private boomGuide: eui.Group;
+	private calculateGuide: eui.Group;
+	public type: number = 0;
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = GuideSkin;
+	}
+
+	protected onshow() {
+		this.calculateGuide.visible = this.type == 0;
+		this.boomGuide.visible = this.type == 1;
+		this.goBoomBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.close, this);
+		this.goCalculateBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.close, this);
+	}
+
+	protected close() {
+		GameEventManager.getInstance().dispatchEventWith(GameEventManager.CLOSEGUIDE);
+		this.hide();
+	}
+}

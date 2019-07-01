@@ -1,0 +1,12 @@
+{
+    "16977f38334": {
+        "path": "View\\Storage.ts",
+        "class": "Storage",
+        "parentPath": ""
+    },
+    "169781d478c": {
+        "path": "View\\GameContent.ts",
+        "class": "GameContent",
+        "parentPath": ""
+    }
+}

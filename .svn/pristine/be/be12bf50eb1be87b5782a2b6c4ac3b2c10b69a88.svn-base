@@ -1,0 +1,252 @@
+class Calculate extends ViewBase {
+	public constructor() {
+		super();
+	}
+
+	protected onload(): void {
+		this.skinName = CalculateSkin;
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+		var ready = new ReadyGo();
+		this.addChild(ready);
+		GameEventManager.getInstance().addEventListener(GameEventManager.READYGO, this.readyGo, this);
+	}
+
+	private readyGo() {
+		this.initPage();
+		this.initNumbers();
+	}
+
+	private addTouchEvent() {
+		this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startCountDown, this);
+	}
+
+	private startCountDown() {
+		this.initNumbers();
+	}
+
+	private titleNums: Array<number>;
+	private choiceNums: Array<number>;
+	private labelGroup: eui.Group;
+	private numLabels: Array<eui.Label>;
+	private startBtn: eui.Button;
+	private nextBtn: eui.Button;
+	private ansNum: number;
+	private maskIndex: number;
+	private choiceGroup: eui.Group;
+	private choiceLabels: Array<eui.Label>;
+	private hollowIndex: number;
+	private hand: eui.Rect;
+	private titleIndex: number;
+	private removeLabels: Array<eui.Label>;
+	private labelLocs: Array<number>;
+	private rightCount: number;
+	private initPage() {
+		this.choiceNums = [];
+		this.choiceLabels = [];
+		this.removeLabels = [];
+		this.maskIndex = 2;
+		this.titleIndex = 0;
+		this.hand.visible = false;
+		this.hand.alpha = DataManager.levels[DataManager.levelIndex].handAlpha;
+		// this.labelLocs = [24, 160, 300, 440, 580];
+		this.numLabels = [];
+		this.rightCount = 0;
+		for (var i = 0; i <= 2; i++) {
+			this.numLabels.push(<eui.Label>this.labelGroup.getChildAt(i));
+		}
+		for (var i = 0; i <= 2; i++) {
+			var group = <eui.Group>this.choiceGroup.getChildAt(i);
+			group.addEventListener(egret.TouchEvent.TOUCH_TAP, this.judge, this);
+			this.choiceLabels.push(<eui.Label>group.getChildAt(1));
+		}
+		this.second = DataManager.levels[DataManager.levelIndex].calculateCountDown;
+		this.minutesecond = 0;
+		this.milliscond = 0;
+		this.timer = new egret.Timer(10, 0);
+		this.timer.addEventListener(egret.TimerEvent.TIMER, this.countDown, this);
+		this.timer.start();
+	}
+
+	private initNumbers() {
+		this.titleNums = [];
+		this.ansNum = Tools.GetRandomNum(1, 9);
+		var num0 = Tools.GetRandomNum(0, this.ansNum);
+		var num1 = this.ansNum - num0;
+		this.titleNums.push(num0);
+		this.titleNums.push(num1);
+		this.titleNums.push(this.ansNum);
+		this.refresh();
+	}
+
+	private nextTitle() {
+		// this.labelHide();
+		var index = Tools.GetRandomNum(0, 100);
+		if (index < 40) {
+			this.maskIndex = 0;
+		} else if (40 < index && index < 80) {
+			this.maskIndex = 1;
+		} else {
+			this.maskIndex = 2;
+		}
+		if (this.maskIndex > 1) {
+			var num0 = Tools.GetRandomNum(0, this.ansNum);
+			var num1 = this.ansNum - num0;
+			this.titleNums[0] = num0;
+			this.titleNums[1] = num1;
+		} else {
+			let num = Tools.GetRandomNum(0, 9 - this.titleNums[this.maskIndex]);
+			this.ansNum = num + this.titleNums[this.maskIndex];
+			if (this.maskIndex == 0) {
+				this.titleNums[1] = num;
+			} else {
+				this.titleNums[0] = num;
+			}
+			this.titleNums[2] = this.ansNum = this.titleNums[this.maskIndex] + num;
+		}
+		this.refresh();
+	}
+
+	private refresh() {
+		this.setQuestionNum();
+		this.setTitleNums();
+		this.setChoiceNums();
+		if (this.titleIndex != 0) {
+			this.hand.visible = true;
+			egret.Tween.get(this.hand)
+				.to({ y: 230 }, DataManager.levels[DataManager.levelIndex].handSpeed)
+				.to({
+					x: this.numLabels[this.maskIndex].x + 25,
+					y: this.numLabels[this.maskIndex].y + 25
+				}, DataManager.levels[DataManager.levelIndex].handSpeed)
+		}
+	}
+
+	private setQuestionNum() {
+		var indexs = [0, 1, 2];
+		indexs = indexs.filter((s) => s !== this.maskIndex);
+		var num = Tools.GetRandomNum(0, 1);
+		this.hollowIndex = indexs[num];
+	}
+
+	private setTitleNums() {
+		this.numLabels.map((s, index) => {
+			s.text = index !== this.hollowIndex ? String(this.titleNums[index]) : '_';
+		});
+	}
+
+	private setChoiceNums() {
+		this.choiceNums = [];
+		this.choiceNums.push(this.titleNums[this.hollowIndex]);
+		for (var i = 0; i <= 1; i++) {
+			var num = Tools.GetRandomNum(0, 9);
+			this.choiceNums.indexOf(num) == -1 ? this.choiceNums.push(num) : i--;
+		}
+		this.choiceNums = Tools.ArrayDisorder(this.choiceNums);
+		this.choiceLabels.map((s, index) => {
+			s.text = String(this.choiceNums[index]);
+		});
+	}
+
+	private judge(e: egret.Event) {
+		var label = e.currentTarget.getChildAt(1);
+		if (Number(label.text) == this.titleNums[this.hollowIndex]) {
+			console.log('good');
+			this.titleIndex++;
+			this.rightCount++;
+			this.numLabels[this.hollowIndex].text = label.text;
+			DataManager.totalScore += 10;
+			egret.Tween.get(this)
+				.wait(DataManager.levels[DataManager.levelIndex].changeTitleSpeed)
+				.call(this.nextTitle)
+			if (this.rightCount == 5) {
+				this.changeBoomLayer();
+			}
+		} else {
+			console.log('out');
+		}
+	}
+
+	private second: number;
+	private minutesecond: number;
+	private milliscond: number;
+	private timer: egret.Timer;
+	private coundDownTimer: eui.Label;
+	protected countDown() {
+		this.milliscond = this.milliscond - 1
+		if (this.milliscond <= 0) {
+			if (0 + this.minutesecond > 1) {
+				this.minutesecond = this.minutesecond - 1;
+				this.milliscond = 9;
+			} else {
+				if (0 + this.second > 0) {
+					this.second = this.second - 1;
+					this.minutesecond = 9;
+					this.milliscond = 0;
+				} else {
+					this.milliscond = 0;
+					this.minutesecond = 0;
+					this.second = 0;
+					this.timer.stop();
+				}
+			}
+		}
+		this.coundDownTimer.text = this.second + " : " + this.minutesecond + this.milliscond;
+	}
+
+	private changeBoomLayer() {
+		var boom = new Bomb();
+		GameEventManager.getInstance().removeEventListener(GameEventManager.READYGO, this.readyGo, this);
+		LayerManager.addChildLayer(boom);
+		LayerManager.removeChildLayer(this);
+	}
+
+	private labelHide() {
+		for (var i = 0; i <= 4; i++) {
+			if (i !== this.maskIndex) {
+				this.removeLabels.push(<eui.Label>this.labelGroup.getChildAt(i));
+			}
+		}
+		this.removeLabels.map(label => {
+			egret.Tween.get(label)
+				.to({ y: label.y - 200 }, 200)
+				.to({ visible: false }, 0)
+		})
+		egret.Tween.get(this)
+			.wait(100)
+			.call(() => {
+				this.labelShow();
+			})
+			.wait(100)
+			.call(() => {
+				this.removeLabels.map(label => {
+					this.labelGroup.removeChild(label);
+				});
+			})
+	}
+
+	private labelShow() {
+		for (var i = 0; i <= 4; i++) {
+			if (i !== this.maskIndex) {
+				var label = new eui.Label;
+				label.width = 150;
+				label.height = 150;
+				label.size = 100;
+				label.textAlign = 'center';
+				label.verticalAlign = 'center';
+				label.x = this.labelLocs[i];
+				label.y = 245;
+				this.labelGroup.addChildAt(label, 0);
+				egret.Tween.get(label)
+					.to({ y: 45 }, 200)
+			}
+			if (i == 1) {
+				label.text = '+';
+			} else if (i == 3) {
+				label.text = '=';
+			}
+		}
+	}
+}

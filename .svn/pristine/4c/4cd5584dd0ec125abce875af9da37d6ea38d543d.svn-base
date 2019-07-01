@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StorySkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="16977f38334" ></w:Config>
+	<e:Rect id="bgRect" width="100%" height="100%" x="0" y="0"/>
+	<e:Button id="nextBtn" label="下一页" x="443.94" y="1187.03" anchorOffsetX="0" width="290.91" anchorOffsetY="0" height="119.7"/>
+	<e:Label id="tipsLabel" text="故事开始" y="236" anchorOffsetX="0" width="343.7" anchorOffsetY="0" height="105.76" x="203" verticalAlign="middle" textAlign="center" size="50"/>
+</e:Skin>

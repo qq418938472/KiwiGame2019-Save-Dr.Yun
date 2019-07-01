@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GuideSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<e:Rect strokeWeight="4" strokeColor="0x737272" ellipseWidth="50" ellipseHeight="50" width="572" y="240" scaleX="1" scaleY="1" height="836" horizontalCenter="0" fillColor="0xf0f0f0"/>
+	<e:Image id="closeBtn" width="70" height="73" x="637.66" y="243.01" source="close_png" anchorOffsetX="35" anchorOffsetY="36.5"/>
+</e:Skin>

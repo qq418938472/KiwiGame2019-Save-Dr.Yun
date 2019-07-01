@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="WrongFeedBackSkin" width="750" height="671" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1697f417f8a" ></w:Config>
+	<e:Image id="bg0" width="750" height="671" x="750" y="341.46" anchorOffsetX="-2.15" anchorOffsetY="341.46" source="out1bg_png"/>
+	<e:Image id="bg1" width="604" height="478" x="898.66" y="332.72" anchorOffsetX="0.51" anchorOffsetY="236.22" source="out1_png"/>
+</e:Skin>

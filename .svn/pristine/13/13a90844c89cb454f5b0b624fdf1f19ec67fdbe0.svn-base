@@ -1,0 +1,18 @@
+class GuidePage extends ViewBase {
+	public constructor() {
+		super();
+	}
+
+	private guideBtn: eui.Button;
+	protected onload(): void {
+		this.skinName = GuidePageSkin;
+		this.addTouchEvent();
+	}
+
+	protected onshow() {
+	}
+
+	private addTouchEvent() {
+		this.guideBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, LayerManager.main.startGame, LayerManager.main);
+	}
+}

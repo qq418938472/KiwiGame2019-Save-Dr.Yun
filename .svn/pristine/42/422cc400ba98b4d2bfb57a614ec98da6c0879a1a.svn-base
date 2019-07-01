@@ -1,0 +1,110 @@
+class CellBoom extends eui.Component implements eui.UIComponent {
+	//定义初始化数据
+	private second: number;
+	private winSecond: number;
+	private isTimeOut: Boolean;
+	private isWinFalg: Boolean;
+	private minutesecond: number;
+	private milliscond: number;
+	private countTime: eui.Label;
+	private timer: egret.Timer;
+	private button: eui.Button;
+	private leftTime: eui.Label;
+	private goodStrt: eui.Label;
+	private boxIndex: number;
+
+	public constructor(index: any, mixSecond: any) {
+		super();
+		this.skinName = cellBoomSkin;
+		this.initUI();
+
+		this.boxIndex = index;
+		this.winSecond = mixSecond;
+	}
+
+	protected initUI() {
+
+		this.isTimeOut = false;
+		this.leftTime.visible = false;
+
+		this.second = Tools.GetRandomNum(DataManager.levels[DataManager.levelIndex].boomCountDown[0], DataManager.levels[DataManager.levelIndex].boomCountDown[1])//[8-5]随机数;
+		this.minutesecond = Tools.GetRandomNum(0, 9);
+		this.milliscond = 0;
+
+		this.countTime.text = "0:00";
+
+		this.timer = new egret.Timer(10, 0);
+		this.timer.addEventListener(egret.TimerEvent.TIMER, this.countDown, this);
+
+		this.button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.stopBoom, this);
+	}
+
+	protected countDown() {
+		this.milliscond = this.milliscond - 1
+		if (this.milliscond <= 0) {
+			if (0 + this.minutesecond > 1) {
+				this.minutesecond = this.minutesecond - 1;
+				this.milliscond = 9;
+			} else {
+				if (0 + this.second > 0) {
+					this.second = this.second - 1;
+					this.minutesecond = 9;
+					this.milliscond = 0;
+				} else {
+					this.milliscond = 0;
+					this.minutesecond = 0;
+					this.second = 0;
+
+					this.stopTime();
+					this.isTimeOut = true;
+					this.isWinFalg = false;
+					this.isWin();
+				}
+
+			}
+		}
+
+		this.countTime.text = this.second + " : " + this.minutesecond + this.milliscond;
+	}
+
+	protected stopBoom() {
+		this.stopTime();
+		this.isWin();
+		var rect = new eui.Rect();
+		rect.width = 250;
+		rect.height = 1334;
+		rect.fillColor = 0xffffff;
+		this.addChild(rect);
+		egret.Tween.get(rect)
+			.to({ alpha: 0 }, 0)
+			.to({ alpha: 1 }, 100)
+			.to({ alpha: 0 }, 100)
+	}
+
+	public stopTime() {
+		this.timer.stop();
+		this.button.touchEnabled = false;
+	}
+
+	protected isWin() {
+		this.leftTime.text = this.second + " : " + this.minutesecond + this.milliscond;
+
+		var times = (this.second + 0) * 1 + (this.minutesecond + 0) * 0.1 + (this.milliscond + 0) * 0.01;
+		if (times < this.winSecond && this.isTimeOut == false) {
+			this.goodStrt.text = "WIN~~~~~~"
+			this.isWinFalg = true
+			this.leftTime.visible
+		} else {
+			this.goodStrt.text = "dead~~~~~"
+			this.isWinFalg = false
+		}
+
+		GameEventManager.getInstance().dispatchEventWith(GameEventManager.BOOMFALG, true, { Falg: this.isWinFalg, index: this.boxIndex });
+	};
+
+	public startTime() {
+		this.timer.start();
+	};
+
+
+}

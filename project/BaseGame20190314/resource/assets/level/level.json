@@ -1,0 +1,38 @@
+[
+    {
+        "calculateCountDown": 18,
+        "handSpeed": 200,
+        "handAlpha": 0.7,
+        "changeTitleSpeed": 500,
+        "accessTitleNum": 8,
+        "boomCountDown": [
+            4,
+            5
+        ],
+        "boomLimitValue": 0.8
+    },
+    {
+        "calculateCountDown": 15,
+        "handSpeed": 150,
+        "handAlpha": 0.9,
+        "changeTitleSpeed": 300,
+        "accessTitleNum": 8,
+        "boomCountDown": [
+            3,
+            5
+        ],
+        "boomLimitValue": 0.8
+    },
+    {
+        "calculateCountDown": 13,
+        "handSpeed": 75,
+        "handAlpha": 1,
+        "changeTitleSpeed": 100,
+        "accessTitleNum": 10,
+        "boomCountDown": [
+            2,
+            3
+        ],
+        "boomLimitValue": 0.8
+    }
+]

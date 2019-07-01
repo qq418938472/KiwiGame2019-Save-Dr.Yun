@@ -1,0 +1,13 @@
+{
+  "global": {
+    "globalAutoLayerMarkEnable": true
+  },
+  "169781d478c": {
+    "guideLinesEnabled": false
+  },
+  "1697f605648": {
+    "path": "View\\BoomWrongFeedBack.ts",
+    "class": "BoomWrongFeedBack",
+    "parentPath": ""
+  }
+}

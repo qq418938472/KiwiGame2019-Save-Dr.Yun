@@ -1,0 +1,16 @@
+class GameEventManager extends egret.DisplayObjectContainer {
+    public constructor() {
+        super();
+    }
+
+    private static _instance: GameEventManager;
+    public static getInstance(): GameEventManager {
+        if (!this._instance) {
+            this._instance = new GameEventManager();
+        }
+        return this._instance;
+    }
+    
+    /**更改金钱 */
+    public static SET_MONEY = "SET_MONEY";
+}

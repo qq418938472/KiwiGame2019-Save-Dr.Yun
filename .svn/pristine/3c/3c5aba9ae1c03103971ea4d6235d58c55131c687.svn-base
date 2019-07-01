@@ -1,0 +1,31 @@
+class Result extends ViewBase {
+	public constructor() {
+		super();
+
+		this.skinName = ResultSkin;
+		this.initUI();
+	}
+
+	protected initUI(){
+		var input:egret.TextField = new egret.TextField();
+        input.text = "请输入你的名字";
+        this.addChild(input);
+        input.width = 480;
+        input.height = 60;
+        input.x = 120;
+		input.y = 600;
+        input.border = true;
+        input.borderColor = 0x999999;
+        input.verticalAlign = egret.VerticalAlign.MIDDLE;
+        /*** 本示例关键代码段开始 ***/
+        input.type = egret.TextFieldType.INPUT;
+        input.addEventListener(egret.FocusEvent.FOCUS_IN, function (e:egret.FocusEvent) {
+        }, this);
+        input.addEventListener(egret.FocusEvent.FOCUS_OUT, function (e:egret.FocusEvent) {
+        }, this);
+        input.addEventListener(egret.Event.CHANGE, function (e:egret.Event) {
+        }, this);
+        /*** 本示例关键代码段结束 ***/
+	};
+	
+}
